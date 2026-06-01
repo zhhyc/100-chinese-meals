@@ -436,6 +436,30 @@
     </style>
 </head>
 <body>
+    <!-- Visit Counter (top-left corner) -->
+    <div id="visit-counter" style="position: fixed; top: 10px; left: 10px; z-index: 9999; background: rgba(255,255,255,0.95); padding: 8px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-size: 13px; color: #2c2c2c; font-family: Georgia, serif; border: 1px solid #e0e0e0;">
+        <span style="color: #c62828;">👁️</span> <span id="visit-count">0</span> visits
+    </div>
+    
+    <script>
+    // Pure frontend visit counter using localStorage
+    (function() {
+        const storageKey = 'zhhyc_visits';
+        
+        // Get current count (or 0 if first visit)
+        let count = parseInt(localStorage.getItem(storageKey) || '0');
+        
+        // Increment on each page load
+        count++;
+        
+        // Save back to localStorage
+        localStorage.setItem(storageKey, count.toString());
+        
+        // Update display
+        document.getElementById('visit-count').textContent = count;
+    })();
+    </script>
+    
     <!-- Hero Section -->
     <section class="hero">
         <h1>100 Chinese Home-Cooked Meals</h1>
